@@ -737,7 +737,7 @@ static $returnType $fromJsonFunction($valueType? value) => $enumNameCamelCase$fr
     final anyOf = prop.anyOf;
     String typeName = "";
     for (var element in anyOf) {
-      if (element.type == kDateTimeFormat) {
+      if (element.format == kDateTimeFormat) {
         typeName = "DateTime?";
         break;
       }

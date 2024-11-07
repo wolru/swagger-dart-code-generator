@@ -1217,6 +1217,19 @@ static $returnType $fromJsonFunction($valueType? value) => $enumNameCamelCase$fr
             requiredProperties: requiredProperties,
           ),
         );
+      } else if (prop.anyOf.isNotEmpty) {
+        results.add(
+          generatePropertyContentByAnyOf(
+            prop: prop,
+            allEnumListNames: allEnumListNames,
+            className: className,
+            allEnumNames: allEnumNames,
+            propertyKey: propertyKey,
+            propertyName: propertyName,
+            basicTypesMap: basicTypesMap,
+            requiredProperties: requiredProperties,
+          ),
+        );
       } else if (prop.hasRef) {
         results.add(generatePropertyContentByRef(
           prop,

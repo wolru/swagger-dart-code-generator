@@ -736,13 +736,17 @@ static $returnType $fromJsonFunction($valueType? value) => $enumNameCamelCase$fr
   }) {
     final anyOf = prop.anyOf;
     String typeName = "";
-    anyOf.forEach((element) {
+    for (var element in anyOf) {
+      if (element.type == kDateTimeFormat) {
+        typeName = "DateTime?";
+        break;
+      }
       if (kBasicTypesMap.containsKey(element.type)) {
         typeName = (kBasicTypesMap[element.type] ?? '') + typeName;
       } else {
         typeName += "?";
       }
-    });
+    }
     final includeIfNullString = generateIncludeIfNullString();
     final unknownEnumValue = generateEnumValue(
       allEnumNames: allEnumNames,
